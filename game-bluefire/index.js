@@ -5,40 +5,6 @@ const GOGAPP_ID = '1280776741';
 const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
-const MOD_FILE_EXT = ".pak";
-
-function testSupportedContent(files, gameId) {
-  // Make sure we're able to support this mod.
-  let supported = (gameId === bluefire) &&
-    (files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT) !== undefined);
-
-  return Promise.resolve({
-    supported,
-    requiredFiles: [],
-  });
-}
-
-function installContent(files) {
-  // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
-  const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
-  const idx = modFile.indexOf(path.basename(modFile));
-  const rootPath = path.dirname(modFile);
-  
-  // Remove directories and anything that isn't in the rootPath.
-  const filtered = files.filter(file => 
-    ((file.indexOf(rootPath) !== -1) 
-    && (!file.endsWith(path.sep))));
-
-  const instructions = filtered.map(file => {
-    return {
-      type: 'copy',
-      source: file,
-      destination: path.join(file.substr(idx)),
-    };
-  });
-
-  return Promise.resolve({ instructions });
-}
 
 function findGame() {
   try {
