@@ -57,35 +57,66 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-  return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
+  if(file.name.indexOf('_P')>-1){
+    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
+  }
+  else{
+    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods','LogicMods'));
+  }
 }
 
 
 function main(context) {
 	//This is the main function Vortex will run when detecting the game extension. 
-	context.registerGame({
-    id: GAME_ID,
-    name: 'Blue Fire',
-    mergeMods: true,
-    queryPath: findGame,
-    supportedTools: [],
-    queryModPath: () => 'Blue Fire/Content/Paks/~mods',
-    logo: 'gameart.jpg',
-    executable: () => 'PROA34.exe',
-    requiredFiles: [
-      'PROA34.exe',
-      'Blue Fire/Binaries/Win64/PROA34-Win64-Shipping.exe'
-    ],
-    setup: prepareForModding,
-    environment: {
-      SteamAPPId: STEAMAPP_ID,
-    },
-    details: {
-      steamAppId: STEAMAPP_ID,
-      gogAppId: GOGAPP_ID,
-    },
-  });
-  context.registerInstaller('bluefire-mod', 25, testSupportedContent, installContent);
+	if(file.name.indexOf('_P')>-1){
+    context.registerGame({
+      id: GAME_ID,
+      name: 'Blue Fire',
+      mergeMods: true,
+      queryPath: findGame,
+      supportedTools: [],
+      queryModPath: () => 'Blue Fire/Content/Paks/~mods',
+      logo: 'gameart.jpg',
+      executable: () => 'PROA34.exe',
+      requiredFiles: [
+        'PROA34.exe',
+        'Blue Fire/Binaries/Win64/PROA34-Win64-Shipping.exe'
+      ],
+      setup: prepareForModding,
+      environment: {
+        SteamAPPId: STEAMAPP_ID,
+      },
+      details: {
+        steamAppId: STEAMAPP_ID,
+        gogAppId: GOGAPP_ID,
+      },
+    });
+  }
+  else{
+    context.registerGame({
+      id: GAME_ID,
+      name: 'Blue Fire',
+      mergeMods: true,
+      queryPath: findGame,
+      supportedTools: [],
+      queryModPath: () => 'Blue Fire/Content/Paks/LogicMods',
+      logo: 'gameart.jpg',
+      executable: () => 'PROA34.exe',
+      requiredFiles: [
+        'PROA34.exe',
+        'Blue Fire/Binaries/Win64/PROA34-Win64-Shipping.exe'
+      ],
+      setup: prepareForModding,
+      environment: {
+        SteamAPPId: STEAMAPP_ID,
+      },
+      details: {
+        steamAppId: STEAMAPP_ID,
+        gogAppId: GOGAPP_ID,
+      },
+    });
+  }
+  
 	return true
 }
 
