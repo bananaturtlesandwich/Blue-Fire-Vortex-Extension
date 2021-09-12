@@ -49,7 +49,7 @@ function installContent(files) {
     && (!file.endsWith(path.sep))));
 
   const instructions = filtered.map(file => {
-    if(file.name.endsWith("_P")){
+    if(path.name(file).endsWith("_P")){
     return {
       type: 'copy',
       source: file,
