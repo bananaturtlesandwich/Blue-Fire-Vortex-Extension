@@ -49,11 +49,21 @@ function installContent(files) {
     && (!file.endsWith(path.sep))));
 
   const instructions = filtered.map(file => {
+    if(file.name.endsWith("_P")==true){
     return {
       type: 'copy',
       source: file,
-      destination: path.join(file.substr(idx)),
+      destination: path.join(file.substr(idx))+"\\~mods",
     };
+    }
+    else{
+      
+    return {
+      type: 'copy',
+      source: file,
+      destination: path.join(file.substr(idx))+"\\LogicMods",
+    };
+    }
   });
 
   return Promise.resolve({ instructions });
@@ -67,7 +77,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => 'Blue Fire/Content/Paks/~mods',
+    queryModPath: () => 'Blue Fire/Content/Paks',
     logo: 'gameart.jpg',
     executable: () => 'PROA34.exe',
     requiredFiles: [
