@@ -3,7 +3,7 @@ const GAME_ID = 'bluefire';
 const STEAMAPP_ID = '1220150';
 const GOGAPP_ID = '1280776741';
 const path = require('path');
-const { fs, log, util } = require('vortex-api');
+const { fs, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
 
 function findGame() {
@@ -105,5 +105,5 @@ function main(context) {
 
 
 module.exports = {
-    default: main,
-  };
+  default: main,
+};
