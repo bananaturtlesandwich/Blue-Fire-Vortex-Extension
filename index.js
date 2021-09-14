@@ -60,14 +60,14 @@ function installContent(files) {
     return {
       type: 'copy',
       source: file,
-      destination: (file.substr(idx)),
+      destination: (file.substr(idx),'~mods'),
     };
     }
     else{
     return {
       type: 'copy',
       source: file,
-      destination: (file.substr(idx)),
+      destination: (file.substr(idx),'LogicMods'),
     };
     }
   });
