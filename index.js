@@ -48,29 +48,29 @@ function installContent(files) {
     ((file.indexOf(rootPath) !== -1) 
     && (!file.endsWith(path.sep))));
 
-    /*const instructions = filtered.map(file => {
+    const instructions = filtered.map(file => {
       return {
         type: 'copy',
         source: file,
-        destination: path.join(file.substr(idx,'~mods')),
+        destination: path.join(file.substr(idx)),
       };
-    });*/
-  const instructions = filtered.map(file => {
-    if(modFile.endsWith("_P")){
+    });
+  /*const instructions = filtered.map(file => {
+    if(modFile.endsWith("_P")||modFile.endsWith("_p")){
     return {
       type: 'copy',
       source: file,
-      destination: (file.substr(idx),'~mods'),
+      destination: ('~mods',file.substr(idx)),
     };
     }
     else{
     return {
       type: 'copy',
       source: file,
-      destination: (file.substr(idx),'LogicMods'),
+      destination: ('LogicMods',file.substr(idx)),
     };
     }
-  });
+  });*/
 
   return Promise.resolve({ instructions });
 }
