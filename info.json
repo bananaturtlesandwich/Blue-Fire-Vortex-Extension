@@ -1,6 +1,10 @@
 {
-  "name": "Game: Blue Fire",
-  "author": "Spud Sandwich",
+  "name": "Blue Fire Vortex Support",
+  "author": "SpudSandwich",
   "version": "2.0.0",
-  "description": "Support for Blue Fire"
+  "description": "Adds blue fire support to Vortex. Click download with manager to install with vortex",
+  "type": "game",
+  "path": "C:\\Users\\afcar\\AppData\\Roaming\\Vortex\\plugins\\Vortex Extension Update - Blue Fire Vortex Support v1.3.0.7z",
+  "bundled": false,
+  "modId": 278
 }
