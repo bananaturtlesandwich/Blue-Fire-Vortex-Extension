@@ -23,7 +23,7 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
+    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'))&&fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
 }
 
 function testSupportedContent(files, gameId) {
@@ -56,7 +56,7 @@ function installContent(files) {
       };
     });
   /*const instructions = filtered.map(file => {
-    if(modFile.endsWith("_P")||modFile.endsWith("_p")){
+    if(modFile.endsWith("_p")){
     return {
       type: 'copy',
       source: file,
@@ -83,7 +83,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => 'Blue Fire/Content/Paks',
+    queryModPath: () => 'Blue Fire/Content/Paks/~mods',
     logo: 'gameart.jpg',
     executable: () => 'PROA34.exe',
     requiredFiles: [
