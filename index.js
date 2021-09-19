@@ -23,7 +23,7 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'))&& fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods'));
+    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
 }
 
 function testSupportedContent(files, gameId) {
