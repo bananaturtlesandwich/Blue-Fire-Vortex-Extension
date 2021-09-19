@@ -60,12 +60,12 @@ function installContent(files) {
         return {
           type: 'copy',
           source: file,
-          destination: path.join(file.substr(idx)),
+          destination: path.join('~mods',file.substr(idx)),
         };
       });
     }
     else{
-      const instructions = filtered.map('~mods',file => {
+      const instructions = filtered.map(file => {
         return {
           type: 'copy',
           source: file,
