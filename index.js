@@ -23,7 +23,7 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'));
+    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'))&& fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods'));
 }
 
 function testSupportedContent(files, gameId) {
@@ -48,29 +48,32 @@ function installContent(files) {
     ((file.indexOf(rootPath) !== -1) 
     && (!file.endsWith(path.sep))));
 
-    const instructions = filtered.map(file => {
+    /*const instructions = filtered.map(file => {
       return {
         type: 'copy',
         source: file,
         destination: path.join(file.substr(idx)),
       };
-    });
-  /*const instructions = filtered.map(file => {
+    });*/
     if(modFile.endsWith("_P")){
-    return {
-      type: 'copy',
-      source: file,
-      destination: path.join("\\~mods"),
-    };
+      const instructions = filtered.map(file => {
+        return {
+          type: 'copy',
+          source: file,
+          destination: path.join(file.substr(idx)),
+        };
+      });
     }
     else{
-    return {
-      type: 'copy',
-      source: file,
-      destination: path.join("\\LogicMods"),
-    };
+      const instructions = filtered.map('~mods',file => {
+        return {
+          type: 'copy',
+          source: file,
+          destination: path.join('LogicMods',file.substr(idx)),
+        };
+      });
     }
-  });*/
+
 
   return Promise.resolve({ instructions });
 }
@@ -83,7 +86,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => 'Blue Fire/Content/Paks/~mods',
+    queryModPath: () => 'Blue Fire/Content/Paks',
     logo: 'gameart.jpg',
     executable: () => 'PROA34.exe',
     requiredFiles: [
