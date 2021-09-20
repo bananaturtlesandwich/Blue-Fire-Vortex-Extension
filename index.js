@@ -60,7 +60,7 @@ function installContent(files) {
         return {
           type: 'copy',
           source: file,
-          destination: path.join('~mods',file.substr(idx)),
+          destination: path.join(file.substr(idx),'~mods'),
         };
       });
     }
@@ -69,7 +69,7 @@ function installContent(files) {
         return {
           type: 'copy',
           source: file,
-          destination: path.join('LogicMods',file.substr(idx)),
+          destination: path.join(file.substr(idx),'LogicMods'),
         };
       });
     }
