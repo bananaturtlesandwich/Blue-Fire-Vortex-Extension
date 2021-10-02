@@ -63,7 +63,7 @@ function installContent(files) {
     ((file.indexOf(rootPath) !== -1) 
     && (!file.endsWith(path.sep))));
     
-    if(path.filename(filePath).endsWith){
+    //if(path.filename(filePath).endsWith){
       const instructions = filtered.map(file => {
         return {
           type: 'copy',
@@ -71,8 +71,8 @@ function installContent(files) {
           destination: path.join('~mods'),
         };
       });
-    }
-    else{
+    //}
+    /*else{
       const instructions = filtered.map(file => {
         return {
           type: 'copy',
@@ -80,7 +80,7 @@ function installContent(files) {
           destination: path.join('LogicMods'),
         };
       });
-    }
+    }*/
 
 
   return Promise.resolve({ instructions });
