@@ -11,6 +11,7 @@ const moddingTools=[
     name:'Unreal Engine 4 Modloader',
     shortname: 'UML',
     executable: () => 'UnrealEngineModLauncher.exe',
+    relative: true,
     requiredFiles: [
       'UnrealEngineModLauncher.exe',
       'UnrealEngineModLoader.dll',
@@ -54,7 +55,6 @@ function testSupportedContent(files, gameId) {
 function installContent(files) {
   // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
   const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
-  const idx = modFile.indexOf(path.basename(modFile));
   const rootPath = path.dirname(modFile);
   
   // Remove directories and anything that isn't in the rootPath.
@@ -69,7 +69,7 @@ function installContent(files) {
         destination: path.join(file.substr(idx)),
       };
     });*/
-    if(modFile.endsWith("_P")){
+    if(path.filename(filePath).endsWith("_P")){
       const instructions = filtered.map(file => {
         return {
           type: 'copy',
