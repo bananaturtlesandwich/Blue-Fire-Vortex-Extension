@@ -5,7 +5,7 @@ const GOGAPP_ID = '1280776741';
 const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
-const moddingTools = [
+/*const moddingTools = [
   {
     id: 'Unreal Modloader',
     name: 'Unreal Engine 4 Modloader',
@@ -16,7 +16,7 @@ const moddingTools = [
       'UnrealEngineModLauncher.exe',
     ],
   }
-]
+]*/
 
 function findGame() {
   try {
@@ -64,7 +64,7 @@ function installContent(files) {
     return {
       type: 'copy',
       source: file,
-      destination: path.join('Paks', '~mods', path.basename(file,'.pak'))
+      destination: modFile.indexOf(path.basename(modFile)/*path.join('Paks', '~mods', path.basename(file,'.pak')*/)
     };
   });
 
