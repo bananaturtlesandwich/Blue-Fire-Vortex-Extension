@@ -7,14 +7,13 @@ const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
 const moddingTools = [
   {
-    id: 'UML',
+    id: 'Unreal Modloader',
     name: 'Unreal Engine 4 Modloader',
     shortName: 'UML',
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
-    relative: true,
     requiredFiles: [
-      'Blue Fire/Binaries/Win64/UnrealModLoader_V2.0.0/UnrealEngineModLauncher.exe',
+      'UnrealEngineModLauncher.exe',
     ],
   }
 ]
