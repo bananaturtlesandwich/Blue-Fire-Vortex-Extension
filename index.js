@@ -13,10 +13,10 @@ const moddingTools=[
     executable: () => 'UnrealEngineModLauncher.exe',
     relative: true,
     requiredFiles: [
-      'UnrealEngineModLauncher.exe',
+      'UnrealEngineModLauncher.exe'/*,
       'UnrealEngineModLoader.dll',
       'ModLoaderInfo.ini'
-      //'Profiles/PROA34-Win64-Shipping.profile'
+      'Profiles/PROA34-Win64-Shipping.profile'*/
     ],
   }
 ]
@@ -61,15 +61,8 @@ function installContent(files) {
   const filtered = files.filter(file => 
     ((file.indexOf(rootPath) !== -1) 
     && (!file.endsWith(path.sep))));
-
-    /*const instructions = filtered.map(file => {
-      return {
-        type: 'copy',
-        source: file,
-        destination: path.join(file.substr(idx)),
-      };
-    });*/
-    if(path.filename(filePath).endsWith("_P")){
+    
+    if(path.filename(filePath).endsWith){
       const instructions = filtered.map(file => {
         return {
           type: 'copy',
