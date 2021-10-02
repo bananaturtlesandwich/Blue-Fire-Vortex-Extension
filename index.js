@@ -14,10 +14,10 @@ const moddingTools = [
     executable: () => 'UnrealEngineModLauncher.exe',
     relative: true,
     requiredFiles: [
-      'UnrealEngineModLauncher.exe'/*,
-      'UnrealEngineModLoader.dll',
-      'ModLoaderInfo.ini'
-      'Profiles/PROA34-Win64-Shipping.profile'*/
+      'Blue Fire\\Binaries\\Win64\\UnrealModLoader_V2.0.0\\UnrealEngineModLauncher.exe',
+      'Blue Fire\\Binaries\\Win64\\UnrealModLoader_V2.0.0\\UnrealEngineModLoader.dll',
+      'Blue Fire\\Binaries\\Win64\\UnrealModLoader_V2.0.0\\ModLoaderInfo.ini',
+      'Blue Fire\\Binaries\\Win64\\UnrealModLoader_V2.0.0\\Profiles\\PROA34-Win64-Shipping.profile'
     ],
   }
 ]
