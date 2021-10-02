@@ -5,10 +5,10 @@ const GOGAPP_ID = '1280776741';
 const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
-const moddingTools=[
+const moddingTools = [
   {
     id: 'UML',
-    name:'Unreal Engine 4 Modloader',
+    name: 'Unreal Engine 4 Modloader',
     shortname: 'UML',
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
@@ -39,7 +39,7 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-    return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods'))&& fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods'));
+  return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods')) && fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods'));
 }
 
 function testSupportedContent(files, gameId) {
@@ -57,20 +57,20 @@ function installContent(files) {
   // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
   const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
   const rootPath = path.dirname(modFile);
-  
+
   // Remove directories and anything that isn't in the rootPath.
-  const filtered = files.filter(file => 
-    ((file.indexOf(rootPath) !== -1) 
+  const filtered = files.filter(file =>
+  ((file.indexOf(rootPath) !== -1)
     && (!file.endsWith(path.sep))));
-    
-    //if(path.filename(filePath).endsWith){
-    const instructions = filtered.map(file => {
-       return {
-        type: 'copy',
-        source: file,
-        destination: path.join('Paks','~mods'),
-      };
-    });
+
+  //if(path.filename(filePath).endsWith){
+  const instructions = filtered.map(file => {
+    return {
+      type: 'copy',
+      source: file,
+      destination: path.join('Paks', '~mods'),
+    };
+  });
 
 
   return Promise.resolve({ instructions });
@@ -84,7 +84,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => path.join('Content','Paks'),
+    queryModPath: () => path.join('Content', 'Paks'),
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
@@ -106,5 +106,5 @@ function main(context) {
 
 
 module.exports = {
-    default: main,
-  };
+  default: main,
+};
