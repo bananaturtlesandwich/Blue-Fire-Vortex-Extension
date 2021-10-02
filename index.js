@@ -64,23 +64,13 @@ function installContent(files) {
     && (!file.endsWith(path.sep))));
     
     //if(path.filename(filePath).endsWith){
-      const instructions = filtered.map(file => {
-        return {
-          type: 'copy',
-          source: file,
-          destination: path.join('Paks','~mods'),
-        };
-      });
-    //}
-    /*else{
-      const instructions = filtered.map(file => {
-        return {
-          type: 'copy',
-          source: file,
-          destination: path.join('LogicMods'),
-        };
-      });
-    }*/
+    const instructions = filtered.map(file => {
+       return {
+        type: 'copy',
+        source: file,
+        destination: path.join('Paks','~mods'),
+      };
+    });
 
 
   return Promise.resolve({ instructions });
