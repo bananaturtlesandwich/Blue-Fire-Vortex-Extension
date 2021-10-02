@@ -9,7 +9,7 @@ const moddingTools = [
   {
     id: 'UML',
     name: 'Unreal Engine 4 Modloader',
-    shortname: 'UML',
+    shortName: 'UML',
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
     relative: true,
