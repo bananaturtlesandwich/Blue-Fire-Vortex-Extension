@@ -14,8 +14,8 @@ const moddingTools=[
     requiredFiles: [
       'UnrealEngineModLauncher.exe',
       'UnrealEngineModLoader.dll',
-      'ModLoaderInfo.ini',
-      'Profiles/PROA34-Win64-Shipping.profile'
+      'ModLoaderInfo.ini'
+      //'Profiles/PROA34-Win64-Shipping.profile'
     ],
   }
 ]
