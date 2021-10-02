@@ -68,7 +68,7 @@ function installContent(files) {
     return {
       type: 'copy',
       source: file,
-      destination: path.join('Paks', '~mods', path.basename(filePath))
+      destination: path.join('Paks', '~mods', file.name/*path.basename(file.name,'.pak')*/)
     };
   });
 
