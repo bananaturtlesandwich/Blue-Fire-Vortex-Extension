@@ -5,6 +5,20 @@ const GOGAPP_ID = '1280776741';
 const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
+const moddingTools=[
+  {
+    id: 'UML',
+    name:'Unreal Engine 4 Modloader',
+    shortname: 'UML',
+    executable: () => 'UnrealEngineModLauncher.exe',
+    requiredFiles: [
+      'UnrealEngineModLauncher.exe',
+      'UnrealEngineModLoader.dll',
+      'ModLoaderInfo.ini',
+      'Profiles/PROA34-Win64-Shipping.profile'
+    ],
+  }
+]
 
 function findGame() {
   try {
