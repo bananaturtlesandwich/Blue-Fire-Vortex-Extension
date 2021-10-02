@@ -87,7 +87,7 @@ function main(context) {
     queryPath: findGame,
     supportedTools: [],
     queryModPath: () => 'Blue Fire/Content/Paks',
-    logo: 'gameart.jpg',
+    logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
       'PROA34.exe',
