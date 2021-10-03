@@ -60,12 +60,12 @@ function installContent(files) {
   ((file.indexOf(rootPath) !== -1)
     && (!file.endsWith(path.sep))));
 
-  //if(path.filename(filePath).endsWith){
+  //if(path.basename(file,'.pak').endsWith){
   const instructions = filtered.map(file => {
     return {
       type: 'copy',
       source: file,
-      destination: path.join('Paks','~mods',path.basename(file))
+      destination: path.join('Paks','~mods'/*,path.basename(file,'.pak')*/,file)
     };
   });
 
