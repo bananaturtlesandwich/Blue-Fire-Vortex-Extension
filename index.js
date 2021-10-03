@@ -65,7 +65,7 @@ function installContent(files) {
     return {
       type: 'copy',
       source: file,
-      destination: path.join(modFile.indexOf(path.basename(modFile))/*path.join('Paks', '~mods', path.basename(file,'.pak')*/)
+      destination: path.join('Paks','~mods',path.basename(file,'.pak'))
     };
   });
 
@@ -81,7 +81,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => path.join('Blue Fire','Content','Paks','~mods'),
+    queryModPath: () => path.join('Blue Fire','Content'),
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
