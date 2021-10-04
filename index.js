@@ -61,30 +61,26 @@ function installContent(files) {
     && (!file.endsWith(path.sep))));
 
   const instructions = filtered.map(file => {
-    switch (dest) {
-      case (path.extname(file) == MOD_FILE_EXT):
-        if (path.basename(file, '.pak').endsWith('_P')) {
-          return {
-            type: 'copy',
-            source: file,
-            destination: path.join('Paks','~mods')
-          };
-        }
-        else {
-          return {
-            type: 'copy',
-            source: file,
-            destination: path.join('Paks', 'LogicMods')
-          };
-        }
-      case (path.extname(file) == '.dll'):
-        return {
-          type: 'copy',
-          source: file,
-          destination: path.join('CoreMods')
-        };
-      default:
-        return;
+    if(path.extname(file)== '.dll'){
+      return {
+        type: 'copy',
+        source: file,
+        destination: path.join('Paks','LogicMods',file)
+      };
+    }
+    else if (path.basename(file, '.pak').endsWith('_P')) {
+      return {
+        type: 'copy',
+        source: file,
+        destination: path.join('Paks','~mods',file)
+      };
+    }
+    else {
+      return {
+        type: 'copy',
+        source: file,
+        destination: path.join('Paks', 'LogicMods',file)
+      };
     }
   });
 
