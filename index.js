@@ -64,31 +64,24 @@ function installContent(files) {
 
   const instructions = filtered.map(file => {
     if (path.extname(file) == ".dll") {
-      if (path.basename(file)==DXGI){
-        return {
-          type: 'copy',
-          source: file,
-          destination: path.join('Binaries','Win64',file)
-        };
-      }
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Content','CoreMods',file)
+        destination: path.join('CoreMods',file)
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Content','Paks', '~mods',file)
+        destination: path.join('Paks', '~mods',file)
       };
     }
     else {
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Content','Paks', 'LogicMods',file)
+        destination: path.join('Paks', 'LogicMods',file)
       };
     }
   });
@@ -104,7 +97,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: moddingTools,
-    queryModPath: () => 'Blue Fire',
+    queryModPath: () => path.join('Blue Fire', 'Content'),
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
