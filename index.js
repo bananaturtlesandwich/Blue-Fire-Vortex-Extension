@@ -14,11 +14,10 @@ const moddingTools = [
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
     requiredFiles: [
-      'UnrealEngineModLauncher.exe',
-      'ModLoaderInfo.ini',
-      'UnrealEngineModLoader.dll',
-      'Profiles/PROA34-Win64-Shipping.profile'
+      'UnrealEngineModLauncher.exe'
     ],
+    relative:true,
+    shell:true
   }
 ];
 
