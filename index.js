@@ -20,9 +20,9 @@ const moddingTools = [
   },
   {
     id:'Fmodel',
-    Name:'Fmodel',
+    name:'Fmodel',
     shortName:'Fmodel',
-    executable:'Fmodel.exe',
+    executable: () => 'Fmodel.exe',
     requiredFiles: [
       'Fmodel.exe'
     ]
