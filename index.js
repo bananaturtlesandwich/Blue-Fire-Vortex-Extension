@@ -62,27 +62,26 @@ function installContent(files) {
 
   const instructions = filtered.map(file => {
     if (path.extname(file) == '.dll') {
-      result = {
+      return {
         type: 'copy',
         source: file,
         destination: path.join('Paks', 'CoreMods',file)
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
-      result = {
+      return {
         type: 'copy',
         source: file,
         destination: path.join('Paks', '~mods',file)
       };
     }
     else {
-      result = {
+      return {
         type: 'copy',
         source: file,
         destination: path.join('Paks', 'LogicMods',file)
       };
     }
-    return result
   });
 
   return Promise.resolve({ instructions });
