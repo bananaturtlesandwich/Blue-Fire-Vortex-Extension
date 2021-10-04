@@ -65,14 +65,14 @@ function installContent(files) {
       result = {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', 'CoreMods')
+        destination: path.join('Paks', 'CoreMods',file)
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
       result = {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', '~mods')
+        destination: path.join('Paks', '~mods',file)
       };
     }
     else {
