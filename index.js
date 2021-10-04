@@ -67,22 +67,21 @@ function installContent(files) {
           return {
             type: 'copy',
             source: file,
-            destination: path.join('Paks','~mods', file)
+            destination: path.join('Paks','~mods')
           };
         }
         else {
           return {
             type: 'copy',
             source: file,
-            destination: path.join('Paks', 'LogicMods', file)
+            destination: path.join('Paks', 'LogicMods')
           };
         }
-        break;
       case (path.extname(file) == '.dll'):
         return {
           type: 'copy',
           source: file,
-          destination: path.join('CoreMods', file)
+          destination: path.join('CoreMods')
         };
       default:
         return;
