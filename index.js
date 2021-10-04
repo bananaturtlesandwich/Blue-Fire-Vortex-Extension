@@ -14,11 +14,7 @@ const moddingTools = [
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
     requiredFiles: [
-<<<<<<< HEAD
-      'UnrealEngineModLauncher.exe'
-=======
       'UnrealEngineModLauncher.exe',
->>>>>>> parent of 1ab7ecf (owo?)
     ],
     shell:true
   },
