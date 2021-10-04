@@ -60,33 +60,25 @@ function installContent(files) {
   ((file.indexOf(rootPath) !== -1)
     && (!file.endsWith(path.sep))));
 
-  if(path.basename(file,'.pak').endsWith('_P')){
+  let dest = null;
   const instructions = filtered.map(file => {
+    switch (dest) {
+      case (path.extname(file) == MOD_FILE_EXT):
+        if (path.basename(file, '.pak').endsWith('_P')) {
+          dest = path.join('Paks', '~mods', file);
+        }
+        else {
+          dest = path.join('Paks', 'LogicMods', file);
+        }
+      case (path.extname(file) == '.dll'):
+        dest = path.join('CoreMods');
+    }
     return {
       type: 'copy',
       source: file,
-      destination: path.join('Paks','~mods',/*path.basename(file,'.pak'),*/file)
+      destination: dest
     };
   });
-  }
-  else if(path.extname == '.pak'){
-    const instructions = filtered.map(file => {
-      return {
-        type: 'copy',
-        source: file,
-        destination: path.join('Paks','LogicMods',file)
-      };
-    });
-  }
-  else if(path.extname == '.dll'){
-    const instructions = filtered.map(file => {
-      return {
-        type: 'copy',
-        source: file,
-        destination: path.join('CoreMods')
-      };
-    });
-  }
 
   return Promise.resolve({ instructions });
 }
@@ -99,7 +91,7 @@ function main(context) {
     mergeMods: true,
     queryPath: findGame,
     supportedTools: [],
-    queryModPath: () => path.join('Blue Fire','Content'),
+    queryModPath: () => path.join('Blue Fire', 'Content'),
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
