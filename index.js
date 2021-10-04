@@ -14,11 +14,10 @@ const moddingTools = [
     logo: 'modloader.png',
     executable: () => 'UnrealEngineModLauncher.exe',
     requiredFiles: [
-      'UnrealEngineModLauncher.exe',
-      'ModLoaderInfo.ini',
-      'UnrealEngineModLoader.dll',
-      'Profiles/PROA34-Win64-Shipping.profile'
+      'UnrealEngineModLauncher.exe'
     ],
+    relative:true,
+    shell:true
   }
 ];
 
@@ -65,24 +64,31 @@ function installContent(files) {
 
   const instructions = filtered.map(file => {
     if (path.extname(file) == ".dll") {
+      if (path.basename(file)==DXGI){
+        return {
+          type: 'copy',
+          source: file,
+          destination: path.join('Binaries','Win64',file)
+        };
+      }
       return {
         type: 'copy',
         source: file,
-        destination: path.join('CoreMods',file)
+        destination: path.join('Content','CoreMods',file)
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', '~mods',file)
+        destination: path.join('Content','Paks', '~mods',file)
       };
     }
     else {
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', 'LogicMods',file)
+        destination: path.join('Content','Paks', 'LogicMods',file)
       };
     }
   });
@@ -97,8 +103,8 @@ function main(context) {
     name: 'Blue Fire',
     mergeMods: true,
     queryPath: findGame,
-    supportedTools: [],
-    queryModPath: () => path.join('Blue Fire', 'Content'),
+    supportedTools: moddingTools,
+    queryModPath: () => 'Blue Fire',
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
     requiredFiles: [
