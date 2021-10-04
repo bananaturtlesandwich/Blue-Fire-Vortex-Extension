@@ -6,7 +6,7 @@ const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
 
-/*const moddingTools = [
+const moddingTools = [
   {
     id: 'Unrealmodloader',
     name: 'Unreal Engine 4 Modloader',
@@ -17,7 +17,7 @@ const winapi = require('winapi-bindings');
       'UnrealEngineModLauncher.exe',
     ],
   }
-];*/
+];
 
 function findGame() {
   try {
@@ -65,21 +65,21 @@ function installContent(files) {
       result = {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', 'LogicMods'/*,file*/)
+        destination: path.join('Paks', 'CoreMods')
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
       result = {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', '~mods'/*,file*/)
+        destination: path.join('Paks', '~mods')
       };
     }
     else {
       result = {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', 'LogicMods'/*,file*/)
+        destination: path.join('Paks', 'LogicMods',file)
       };
     }
     return result
