@@ -1,4 +1,4 @@
-const MOD_FILE_EXT = ".pak" && ".dll";
+const MOD_FILE_EXT = ".pak";
 const GAME_ID = 'bluefire';
 const STEAMAPP_ID = '1220150';
 const GOGAPP_ID = '1280776741';
@@ -62,7 +62,7 @@ function testSupportedContent(files, gameId) {
 
 function installContent(files) {
   // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
-  const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
+  const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT || '.dll');
   const rootPath = path.dirname(modFile);
 
   // Remove directories and anything that isn't in the rootPath.
