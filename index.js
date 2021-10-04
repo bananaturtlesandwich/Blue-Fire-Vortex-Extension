@@ -61,11 +61,11 @@ function installContent(files) {
     && (!file.endsWith(path.sep))));
 
   const instructions = filtered.map(file => {
-    if (path.extname(file) == '.dll') {
+    if (path.extname(file) == ".dll") {
       return {
         type: 'copy',
         source: file,
-        destination: path.join('Paks', 'CoreMods',file)
+        destination: path.join('CoreMods',file)
       };
     }
     else if (path.basename(file, '.pak').endsWith('_P')) {
