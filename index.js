@@ -97,7 +97,7 @@ function main(context) {
     name: 'Blue Fire',
     mergeMods: true,
     queryPath: findGame,
-    supportedTools: [],
+    supportedTools: moddingTools,
     queryModPath: () => path.join('Blue Fire', 'Content'),
     logo: 'gameart.png',
     executable: () => 'PROA34.exe',
