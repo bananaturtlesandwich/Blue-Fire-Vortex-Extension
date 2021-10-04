@@ -17,6 +17,15 @@ const moddingTools = [
       'UnrealEngineModLauncher.exe'
     ],
     shell:true
+  },
+  {
+    id:'Fmodel',
+    Name:'Fmodel',
+    shortName:'Fmodel',
+    executable:'Fmodel.exe',
+    requiredFiles: [
+      'Fmodel.exe'
+    ]
   }
 ];
 
