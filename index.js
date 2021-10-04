@@ -52,7 +52,7 @@ function testSupportedContent(files, gameId) {
 
 function installContent(files) {
   // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
-  const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
+  const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT || '.dll');
   const rootPath = path.dirname(modFile);
 
   // Remove directories and anything that isn't in the rootPath.
@@ -60,18 +60,30 @@ function installContent(files) {
   ((file.indexOf(rootPath) !== -1)
     && (!file.endsWith(path.sep))));
 
-  let dest = null;
   const instructions = filtered.map(file => {
     switch (dest) {
       case (path.extname(file) == MOD_FILE_EXT):
         if (path.basename(file, '.pak').endsWith('_P')) {
-          dest = path.join('Paks', '~mods', file);
+          return {
+            type: 'copy',
+            source: file,
+            destination: path.join('Paks','~mods', file)
+          };
         }
         else {
-          dest = path.join('Paks', 'LogicMods', file);
+          return {
+            type: 'copy',
+            source: file,
+            destination: path.join('Paks', 'LogicMods', file)
+          };
         }
+        break;
       case (path.extname(file) == '.dll'):
-        dest = path.join('CoreMods');
+        return {
+          type: 'copy',
+          source: file,
+          destination: path.join('CoreMods', file)
+        };
     }
     return {
       type: 'copy',
