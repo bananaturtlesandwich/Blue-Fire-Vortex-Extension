@@ -9,12 +9,14 @@ const winapi = require('winapi-bindings');
 const moddingTools = [
   {
     id: 'Unrealmodloader',
-    name: 'Unreal Engine 4 Modloader',
+    name: 'Unreal Engine Modloader',
     shortName: 'UML',
-    logo: 'modloader.png',
+    logo: 'UML.png',
     executable: () => 'UnrealEngineModLauncher.exe',
     requiredFiles: [
       'UnrealEngineModLauncher.exe',
+      'ModLoaderInfo.ini',
+      'UnrealEngineModLoader.dll'
     ],
     shell:true
   },
@@ -22,6 +24,7 @@ const moddingTools = [
     id:'Fmodel',
     name:'Fmodel',
     shortName:'Fmodel',
+    logo: 'Fmodel.png',
     executable: () => 'Fmodel.exe',
     requiredFiles: [
       'Fmodel.exe'
