@@ -84,12 +84,9 @@ function installContent(files) {
           source: file,
           destination: path.join('CoreMods', file)
         };
+      default:
+        return;
     }
-    return {
-      type: 'copy',
-      source: file,
-      destination: dest
-    };
   });
 
   return Promise.resolve({ instructions });
