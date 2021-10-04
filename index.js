@@ -36,7 +36,7 @@ function findGame() {
 }
 
 function prepareForModding(discovery) {
-  return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods')) && fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods'));
+  return fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', '~mods')) && fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'Paks', 'LogicMods')) && fs.ensureDirAsync(path.join(discovery.path, 'Blue Fire', 'Content', 'CoreMods'));
 }
 
 function testSupportedContent(files, gameId) {
@@ -65,7 +65,7 @@ function installContent(files) {
     return {
       type: 'copy',
       source: file,
-      destination: path.join('Paks','~mods',path.basename(file,'.pak'),file)
+      destination: path.join('Paks','~mods',/*path.basename(file,'.pak'),*/file)
     };
   });
 
