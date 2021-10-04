@@ -60,7 +60,7 @@ function installContent(files) {
   ((file.indexOf(rootPath) !== -1)
     && (!file.endsWith(path.sep))));
 
-  //if(path.basename(file,'.pak').endsWith){
+  if(path.basename(file,'.pak').endsWith('_P')){
   const instructions = filtered.map(file => {
     return {
       type: 'copy',
@@ -68,7 +68,25 @@ function installContent(files) {
       destination: path.join('Paks','~mods',/*path.basename(file,'.pak'),*/file)
     };
   });
-
+  }
+  else if(path.extname == '.pak'){
+    const instructions = filtered.map(file => {
+      return {
+        type: 'copy',
+        source: file,
+        destination: path.join('Paks','LogicMods',file)
+      };
+    });
+  }
+  else if(path.extname == '.dll'){
+    const instructions = filtered.map(file => {
+      return {
+        type: 'copy',
+        source: file,
+        destination: path.join('CoreMods')
+      };
+    });
+  }
 
   return Promise.resolve({ instructions });
 }
