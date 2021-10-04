@@ -16,7 +16,6 @@ const moddingTools = [
     requiredFiles: [
       'UnrealEngineModLauncher.exe'
     ],
-    relative:true,
     shell:true
   }
 ];
