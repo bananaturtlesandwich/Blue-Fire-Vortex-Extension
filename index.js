@@ -2,6 +2,7 @@ const MOD_FILE_EXT = ".pak";
 const GAME_ID = 'bluefire';
 const STEAMAPP_ID = '1220150';
 const GOGAPP_ID = '1280776741';
+const PRIME_ID = 'amzn1.adg.product.0d364464-032c-40c9-a6da-c633a53e3374'
 const path = require('path');
 const { fs, log, util } = require('vortex-api');
 const winapi = require('winapi-bindings');
